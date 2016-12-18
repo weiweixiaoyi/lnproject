@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.guo.lnproject.MainActivity">
+    <item
+        android:id="@+id/action_more"
+        android:orderInCategory="100"
+        android:title="more"
+        android:icon="@mipmap/toolbar_more"
+        app:showAsAction="always" />
+</menu>

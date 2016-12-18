@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_bg">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dip"
+        android:background="@color/toolbar_bg">
+        <ImageView
+            android:id="@+id/newalarm_backImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/img_back"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/newalarm_titleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="编辑闹钟信息"
+            android:layout_toRightOf="@id/newalarm_backImg"
+            />
+        <ImageView
+            android:id="@+id/newalarm_commitImg"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_check"/>
+    </RelativeLayout>
+    <View
+        style="@style/AppDivider_Long"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="53dp"
+            android:background="@color/text_red" />
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="53dp"
+            android:background="@color/text_red" />
+
+        <com.example.guo.lnproject.widget.PickerView
+            android:id="@+id/newalarm_hour_pikerView"
+            android:layout_width="86dp"
+            android:layout_height="160dp" />
+
+        <TextView
+            android:id="@+id/minute_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text=":"
+            android:textColor="#ffaa33"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <com.example.guo.lnproject.widget.PickerView
+            android:id="@+id/newalarm_minute_pickerView"
+            android:layout_width="86dp"
+            android:layout_height="160dp"
+            android:layout_alignParentRight="true" />
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="108dp"
+            android:background="@color/text_red" />
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="0.5dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="108dp"
+            android:background="@color/text_red" />
+    </RelativeLayout>
+
+    <View
+        style="@style/AppDivider_Short"
+        android:layout_marginTop="20dp"/>
+
+    <RelativeLayout
+        android:id="@+id/newalarm_editLabelLayout"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/newalarm_txtTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:text="标签"/>
+        <TextView
+            android:id="@+id/newalarm_labelTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newalarm_txtTv"
+            android:text="闹钟"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="30sp"
+            android:text=">"/>
+    </RelativeLayout>
+    <View
+        style="@style/AppDivider_Short"
+       />
+</LinearLayout>

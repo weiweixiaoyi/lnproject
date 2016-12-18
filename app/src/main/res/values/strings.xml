@@ -1,0 +1,125 @@
+<resources>
+    <string name="app_name">健康小护士</string>
+    <string name="action_settings">Settings</string>
+    <string name="error_string">网络似乎出现了问题呢</string>
+    <string name="drink_title">喝水时间</string>
+    <string name="head_title">颈椎健康</string>
+    <string name="pill_title">吃药时间</string>
+
+
+    <!--专家推荐-->
+    <string name="recommend_title1">1.起床</string>
+    <string name="recommend_title2">2.开始工作和学习</string>
+    <string name="recommend_title3">3.上午</string>
+    <string name="recommend_title4">4.午餐前</string>
+    <string name="recommend_title5">5.午休后</string>
+    <string name="recommend_title6">6.下午</string>
+    <string name="recommend_title7">7.晚餐前</string>
+    <string name="recommend_title8">8.睡觉前</string>
+    <string name="recommend_content1">经过一整夜的睡眠，身体开始缺水，起床之际先喝水，可帮助肾脏及肝脏解毒</string>
+    <string name="recommend_content2">清晨从起床到办公室的过程，时间总是特别紧张，情绪也较紧张，身体无形中会出现脱水现象，所以到了办公室后，先给自己一杯水</string>
+    <string name="recommend_content3">在冷气房里工作一段时间后，一定得趁起身动动的时候，再给自己一天里的第三杯水，补充流失的水分，有助于放松紧张的工作情绪</string>
+    <string name="recommend_content4">午餐前：餐前充分饮水有助于消化和减肥</string>
+    <string name="recommend_content5">午休后，喝一些水，可以加强身体的消化功能</string>
+    <string name="recommend_content6">以一杯健康矿泉水代替午茶与咖啡等提神饮料吧！能够提神醒脑。</string>
+    <string name="recommend_content7">晚餐前再喝一杯水，增加饱足感，待会吃晚餐时，自然不会暴饮暴食。</string>
+    <string name="recommend_content8">睡前1至半小时再喝上一杯水，今天已摄取足够水量了。不过别一口气喝太多，以免晚上上洗手间影响睡眠质量。</string>
+    resources>
+
+    <!--水杯容量-->
+    <string name="cup_title1">嘴巴</string>
+    <string name="cup_title2">普通罐装可乐</string>
+    <string name="cup_title3">普通瓶装可乐</string>
+    <string name="cup_title4">纯净水或矿泉水</string>
+    <string name="cup_title5">红酒</string>
+    <string name="cup_title6">肯德基/麦当劳杯装可乐</string>
+    <string name="cup_title7">星巴克</string>
+    <string name="cup_title8">嘴巴一次性纸杯，中杯</string>
+    <string name="cup_content1">男性：一口水约35ml\n女性：一口水约30ml</string>
+    <string name="cup_content2">355ml</string>
+    <string name="cup_content3">600ml</string>
+    <string name="cup_content4">500ml</string>
+    <string name="cup_content5">750ml</string>
+    <string name="cup_content6">小：335ml 中：450ml \n 大：610ml</string>
+    <string name="cup_content7">short/小：236ml\ntall/中：355ml\ngrande/大：473ml\nventi/特大：591ml</string>
+    <string name="cup_content8">228ml</string>
+
+    <string name="dialog_adjust_remarks">备注：\n1.可通过体重来设定喝水目标(p.s.成年人每公斤体重每天应该补充40ml水)\n2.完成每日喝水健康目标，可以得到钻石奖励\n3.调整将会当天即时生效</string>
+
+
+    <!-- 颈椎健康-->
+    <string name="head_laozhen">落枕</string>
+    <string name="head_laozhen_desc">入睡前并无任何症状，晨起后却感到项背部明显酸痛、僵硬，颈部活动受限。</string>
+    <string name="laozhen_title1">转转脚趾脖子灵</string>
+    <string name="laozhen_focus1">按摩要记住左脚管左边，右脚管右边，经常按摩，能直接或间接舒缓颈项的肌肉僵硬，有助于预防脖子的劳损。</string>
+    <string name="laozhen_principle1">在脚拇趾附近有足太阴脾经的隐白穴和方法原理 大都穴，足厥阴肝经的大敦穴和行间穴，旋转按摩脚拇趾时可以刺激这些穴位，行气活血，疏经止痛。足部全息反应区中，反应颈部的部位位于两足拇趾根部，即小脑反射区下方。按摩足拇趾还适用于治疗颈部酸痛、颈部扭伤、局血压病等病症。</string>
+    <string name="laozhen_feeling1">转的时候脚趾有点发胀，后来感觉脚趾转动灵活了，做完脖子也轻松不少。</string>
+    <string name="laozhen_method1">落枕了，旋转脚趾可以缓解疼痛。把落枕侧的脚抬起来，将大拇指掰开，慢慢地按摩、旋转，约每秒一圈，有胀痛的感觉落枕便可缓解。按摩旋转大约需要10分钟，以感到脖子疼痛缓解为宜。</string>
+    <string name="laozhen_title2">拔罐变轻松</string>
+    <string name="laozhen_focus2">1.找准穴位 (穴位按压时有酸胀麻的感觉)/n2.一般需留罐10分钟，以觉得舒服为准，气血虚弱者可少拔一会儿。</string>
+    <string name="laozhen_tool2">真空拔罐器或火罐。</string>
+    <string name="laozhen_attention2">拔罐应在温暖、避风的地方进行，避免受寒。局部皮肤有炎症或是破溃、有出血倾向者不宜拔罐；如果拔火罐要防止烫伤。</string>
+    <string name="laozhen_principle2">拔罐最捧的功能就是它的引血功能，通过物理的刺激和负压，促进血液循环，调理气血，达到排汗除湿，活血化瘀的作用，对解除落枕，脖子酸痛发紧，肩背僵硬发板等症状很有效。</string>
+    <string name="laozhen_feeling2">感觉拔罐后颈肩部轻松</string>
+    <string name="laozhen_method2">在大椎穴、肩井穴、天宗穴拔罐，留罐十分钟左右。</string>
+    <string name="laozhen_title3">落枕特效穴</string>
+    <string name="laozhen_focus3">左侧落枕，先按揉右手落枕穴，反之亦然。</string>
+    <string name="laozhen_principle3">本穴治疗落枕病症有特效，故名。</string>
+    <string name="laozhen_feeling3">感觉穴位处还真疼，但做完脖子确实轻松了许多。</string>
+    <string name="laozhen_method3">1.落枕穴在手背上食指和中指骨之间，掌指关节后大约一指宽的距离上，用指甲一掐，有强烈压痛之处，就是落枕穴。稍微用力，先按揉症状轻的一侧的落枕穴3分钟，脖子便会变得轻松多了。
+        \n2.按揉症状严重的同侧的落枕穴3分钟</string>
+    <string name="source">民间</string>
+    <string name="head_shubiaoshou">鼠标手</string>
+    <string name="head_shubiaoshou_desc">鼠标手是指进入手部的神经、血管在手腕部位受到压迫引起的手指僵硬、疼痛、麻木、无力感。用腕过度、颈椎病、局部炎症、腕关节囊肿等均可导致。通过使用以下方法可以减轻鼠标手症状，帮你减轻痛苦。</string>
+    <string name="shubiaoshou_title1">速消手腕痛</string>
+    <string name="shubiaoshou_focus1">按揉穴位时要有酸胀的感觉</string>
+    <string name="shubiaoshou_principle1">通过按摩大陵、阳池穴可疏通经脉、滑利关节，缓解腕关节损伤，改善"鼠标手"。</string>
+    <string name="shubiaoshou_feeling1">按摩后感觉手腕灵活了，不那么痛了。</string>
+    <string name="shubiaoshou_method1">找到疼痛一侧手腕上的阳池穴和大陵穴，以拇指和中指掐住两穴位，有酸麻胀的感觉。（阳池穴和大陵穴刚好是相对的，找到阳池穴再定位大陵穴就很容易）\n
+    阳池：位于手背侧，把手腕向外弯曲，皱纹中间的凹陷处。手腕中央稍靠无名指侧。也就是越过中指肌腱，靠近尺骨小头斜上方处的位置。</string>
+    <string name="shubiaoshou_title2">灵活手腕操</string>
+    <string name="shubiaoshou_focus2"></string>
+    <string name="shubiaoshou_principle2">有节律地活动手腕，起到加强腕部气血运行作用，可有效改善鼠标手症状。</string>
+    <string name="shubiaoshou_feeling2">感受：感觉手腕被拉伸了，灵活了些，不那么僵硬了。</string>
+    <string name="shubiaoshou_method2">1.用左手抓住右手手指，帮助右手手腕上下左右活动，每个方向活动10秒。建议每次做4组。\n2.以相同方法锻炼左手腕。</string>
+    <string name="shubiaoshou_title3">揉走鼠标手</string>
+    <string name="shubiaoshou_focus3">灵活手腕操</string>
+    <string name="shubiaoshou_principle3">灵活手腕操</string>
+    <string name="shubiaoshou_feeling3">灵活手腕操</string>
+    <string name="shubiaoshou_method3">灵活手腕操</string>
+    <string name="head_bozisuantong">脖子酸痛发紧</string>
+    <string name="head_bozisuantongfajin_desc">脖子两侧感觉不一样，常一侧发紧，甚至牵涉到头部，脖子活动也不像原来那么灵活，感觉有些酸痛或按一授可能还能找到痛点。多由于长时间保持一个姿势疲劳而造成。其他可见于颈椎病、洛枕、扭伤。通过一些小方法可以帮助减轻症状，减少痛苦。改变习惯，每隔1小时更换和活动一下脖子，能够预防。如症状重，应及时就医治疗。</string>
+    <string name="bozisuantong_title1">毛巾摩后颈</string>
+    <string name="bozisuantong_focus1">毛巾摩后颈</string>
+    <string name="bozisuantong_principle1">毛巾摩后颈</string>
+    <string name="bozisuantong_feeling1">毛巾摩后颈</string>
+    <string name="bozisuantong_method1">毛巾摩后颈</string>
+    <string name="bozisuantong_title2">乌龟master</string>
+    <string name="bozisuantong_focus2">乌龟master</string>
+    <string name="bozisuantong_principle2">乌龟master</string>
+    <string name="bozisuantong_feeling2">乌龟master</string>
+    <string name="bozisuantong_method2">乌龟master</string>
+    <string name="bozisuantong_title3">快速舒缓肩颈</string>
+    <string name="bozisuantong_focus3">快速舒缓肩颈</string>
+    <string name="bozisuantong_principle3">快速舒缓肩颈</string>
+    <string name="bozisuantong_feeling3">快速舒缓肩颈</string>
+    <string name="bozisuantong_method3">快速舒缓肩颈</string>
+    <string name="head_jianbeijiangying">肩背僵硬发板</string>
+    <string name="head_jianbeijiangying_desc">感觉后背像背着一块石板一样，发板发硬，甚至疼痛，常见于长时间保持同一个姿势疲劳过度引起，还可能与颈椎病、肩周炎等原因有关。通过一些自我解决方法可以缓解症状，工作和生活中注意经常活动身体有助于预防。但如果问题严重应及时试医诊治。</string>
+    <string name="jianbeijiangying_title1">快速舒缓肩颈</string>
+    <string name="jianbeijiangying_focus1">快速舒缓肩颈</string>
+    <string name="jianbeijiangying_principle1">快速舒缓肩颈</string>
+    <string name="jianbeijiangying_feeling1">快速舒缓肩颈</string>
+    <string name="jianbeijiangying_method1">快速舒缓肩颈</string>
+    <string name="jianbeijiangying_title2">拔罐变轻松</string>
+    <string name="jianbeijiangying_focus2">拔罐变轻松</string>
+    <string name="jianbeijiangying_principle2">拔罐变轻松</string>
+    <string name="jianbeijiangying_feeling2">拔罐变轻松</string>
+    <string name="jianbeijiangying_method2">拔罐变轻松</string>
+    <string name="jianbeijiangying_title3">瑜伽颈椎操</string>
+    <string name="jianbeijiangying_focus3">瑜伽颈椎操</string>
+    <string name="jianbeijiangying_principle3">瑜伽颈椎操</string>
+    <string name="jianbeijiangying_feeling3">瑜伽颈椎操</string>
+    <string name="jianbeijiangying_method3">瑜伽颈椎操</string>
+
+</resources>
