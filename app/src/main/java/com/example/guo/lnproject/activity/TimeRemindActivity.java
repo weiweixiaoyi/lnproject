@@ -19,9 +19,9 @@ import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.adapter.BaseHolderAdapter;
 import com.example.guo.lnproject.adapter.ViewHolder;
 import com.example.guo.lnproject.alarm.Alarm;
-import com.example.guo.lnproject.alarm.AlarmClockManager;
 import com.example.guo.lnproject.alarm.AlarmColumns;
 import com.example.guo.lnproject.alarm.AlarmDBManager;
+import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.utils.CommonSPManager;
 import com.example.guo.lnproject.utils.DensityUtil;
 import com.example.guo.lnproject.utils.LogUtils;
@@ -36,7 +36,7 @@ import butterknife.OnClick;
 /**
  * Created by Administrator on 2016/3/19.
  */
-public class TimeRemindActivity extends SuperActivity {
+public class TimeRemindActivity extends BaseActivity {
     private static final String TAG ="TimeRemindActivity" ;
     @Bind(R.id.timeremind_musicImg)
     public ImageView musicImg;

@@ -1,4 +1,4 @@
-package com.example.guo.lnproject.fragment;
+package com.example.guo.lnproject.module.neck;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

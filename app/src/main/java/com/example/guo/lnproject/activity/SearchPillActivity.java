@@ -1,7 +1,6 @@
 package com.example.guo.lnproject.activity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -11,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.example.guo.lnproject.R;
+import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.bean.PillSearchInfoEntity;
 import com.example.guo.lnproject.utils.LogUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -26,7 +25,7 @@ import okhttp3.Call;
 /**
  * Created by Administrator on 2016/4/25 0025.
  */
-public class SearchPillActivity extends SuperActivity {
+public class SearchPillActivity extends BaseActivity {
 
     private static final String TAG = "SearchPillActivity";
     @Bind(R.id.searchpill_editText)

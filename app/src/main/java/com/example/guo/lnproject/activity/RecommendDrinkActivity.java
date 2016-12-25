@@ -1,16 +1,12 @@
 package com.example.guo.lnproject.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.adapter.BaseHolderAdapter;
 import com.example.guo.lnproject.adapter.ViewHolder;
+import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.bean.CookMethodEntity;
 import com.example.guo.lnproject.bean.RecommendDrinkEntity;
 import com.example.guo.lnproject.utils.AppManager;
@@ -33,7 +30,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016/3/9.
  */
-public class RecommendDrinkActivity extends SuperActivity {
+public class RecommendDrinkActivity extends BaseActivity {
 
     private static final String TAG = "RecommendDrinkActivity";
     List<RecommendDrinkEntity> recommendList;

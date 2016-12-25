@@ -3,12 +3,12 @@ package com.example.guo.lnproject.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.guo.lnproject.R;
+import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.utils.AppManager;
 
 import java.util.HashMap;
@@ -18,7 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HeadMethodActivity extends SuperActivity {
+public class HeadMethodActivity extends BaseActivity {
 
     public static final int TYPE_LAOZHEN = 1;
     public static final int TYPE_SHUBIAOSHOU = 2;

@@ -5,8 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,19 +12,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.alarm.Alarm;
 import com.example.guo.lnproject.alarm.AlarmClockManager;
 import com.example.guo.lnproject.alarm.AlarmColumns;
 import com.example.guo.lnproject.alarm.AlarmDBManager;
+import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.utils.DensityUtil;
 import com.example.guo.lnproject.utils.LogUtils;
 import com.example.guo.lnproject.utils.ToastUtils;
 import com.example.guo.lnproject.widget.PickerView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +34,7 @@ import butterknife.OnClick;
 /**
  * Created by Administrator on 2016/3/27.
  */
-public class NewAlarmActivity extends SuperActivity {
+public class NewAlarmActivity extends BaseActivity {
 
     private static final String TAG = "NewAlarmActivity";
     @Bind(R.id.newalarm_hour_pikerView)

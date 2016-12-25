@@ -3,7 +3,6 @@ package com.example.guo.lnproject.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.guo.lnproject.R;
+import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.utils.AppManager;
 import com.example.guo.lnproject.utils.Contacts;
 
@@ -18,7 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MethodActionActivity extends SuperActivity {
+public class MethodActionActivity extends BaseActivity {
 
     @Bind(R.id.methodaction_gifImg)
     public ImageView gifImg;

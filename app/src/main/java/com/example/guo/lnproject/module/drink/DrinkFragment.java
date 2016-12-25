@@ -1,4 +1,4 @@
-package com.example.guo.lnproject.fragment;
+package com.example.guo.lnproject.module.drink;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

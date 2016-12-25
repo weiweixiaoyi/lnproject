@@ -1,4 +1,4 @@
-package com.example.guo.lnproject.fragment;
+package com.example.guo.lnproject.module.pill;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -19,12 +17,12 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.example.guo.lnproject.MainActivity;
 import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.activity.RecommendDrinkActivity;
 import com.example.guo.lnproject.activity.SearchPillActivity;
 import com.example.guo.lnproject.activity.TimeRemindActivity;
 import com.example.guo.lnproject.adapter.MyViewPagerAdapter;
+import com.example.guo.lnproject.base.BaseFragment;
 import com.example.guo.lnproject.bean.CookbookEntity;
 import com.example.guo.lnproject.utils.Contacts;
 import com.example.guo.lnproject.utils.DensityUtil;
@@ -37,16 +35,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
 /**
  * Created by Administrator on 2016/3/16.
  */
-public class PillFragment extends Fragment{
+public class PillFragment extends BaseFragment implements PillView
+
+{
     private static final String TAG = "PillFragment";
-    private View convertView;
     @Bind(R.id.pill_viewPager)
     public CustomViewPager mViewPager;
     @Bind(R.id.pill_viewpagerLayout)
@@ -67,12 +65,16 @@ public class PillFragment extends Fragment{
     private List<CookbookEntity.ResultEntity.ListEntity> datas;
     private LayoutInflater inflater;
     private MyViewPagerAdapter adapter;
+    private PillPresenter mPresenter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        convertView = inflater.inflate(R.layout.fragment_pill, null);
-        ButterKnife.bind(this, convertView);
-        return convertView;
+    protected int setUpContentView() {
+        return R.layout.fragment_pill;
+    }
+
+    @Override
+    protected void initPresenter() {
+        mPresenter = new PillPresenterIml(this);
     }
 
     @Override
@@ -113,7 +115,7 @@ public class PillFragment extends Fragment{
             }
         });
         mViewPager.setAdapter(adapter);
-        loadData();
+        mPresenter.loadCookbookData();
     }
 
     @OnClick({R.id.pill_searchPillLayout,R.id.pill_timeRemindLayout})
@@ -197,60 +199,44 @@ public class PillFragment extends Fragment{
         }
     }
 
-    private void loadData() {
-
-        String url1 = "http://apicloud.mob.com/v1/cook/menu/search";
-        OkHttpUtils.get().url(url1).addParams("key", "fdfee2e569f5")
-                .addParams("name", "养生").addParams("page", "1")
-                .addParams("size", "20").build().execute(new StringCallback() {
-
-            @Override
-            public void onError(Call call, Exception e) {
-
-            }
-
-            @Override
-            public void onResponse(String response) {
-//						Log.i(TAG, "response--" + response);
-                CookbookEntity entity = JSON.parseObject(response,
-                        CookbookEntity.class);
-                if (entity != null
-                        && entity.getResult() != null
-                        && entity.getResult().getList() != null
-                        && entity.getResult().getList().size() > 0) {
-                    datas = entity.getResult().getList();
-                    size = datas.size() > 5 ? 5 : datas.size();
-                    initViews();
-                    Log.i(TAG, "entity---"+datas.size());
-                    if (datas.size() > 1) {
-                        isViewPagerScroll = true;
-                        initIndicator();
-                        mViewPager.setScanScroll(true);
-                        mViewPager.setCurrentItem(1);
-                        mHandler.sendEmptyMessageDelayed(HANDLER_START,
-                                HANDLER_DELAY_TIME);
-                    } else {
-                        isViewPagerScroll = false;
-                        mHandler.removeMessages(HANDLER_START);
-                        mViewPager.setScanScroll(false);
-                    }
-                    mViewPagerLayout.setVisibility(View.VISIBLE);
-                    isViewPagerVisible = true;
-                } else {
-                    mViewPagerLayout.setVisibility(View.GONE);
-                    isViewPagerVisible = false;
-                }
-
-            }
-        });
-    }
-
     @Override
     public void onDetach() {
         super.onDetach();
         mHandler.removeCallbacksAndMessages(null);
     }
 
+    @Override
+    public void updateBannerData(String data) {
+        CookbookEntity entity = JSON.parseObject(data,
+                CookbookEntity.class);
+        if (entity != null
+                && entity.getResult() != null
+                && entity.getResult().getList() != null
+                && entity.getResult().getList().size() > 0) {
+            datas = entity.getResult().getList();
+            size = datas.size() > 5 ? 5 : datas.size();
+            initViews();
+            Log.i(TAG, "entity---"+datas.size());
+            if (datas.size() > 1) {
+                isViewPagerScroll = true;
+                initIndicator();
+                mViewPager.setScanScroll(true);
+                mViewPager.setCurrentItem(1);
+                mHandler.sendEmptyMessageDelayed(HANDLER_START,
+                        HANDLER_DELAY_TIME);
+            } else {
+                isViewPagerScroll = false;
+                mHandler.removeMessages(HANDLER_START);
+                mViewPager.setScanScroll(false);
+            }
+            mViewPagerLayout.setVisibility(View.VISIBLE);
+            isViewPagerVisible = true;
+        } else
+        {
+            mViewPagerLayout.setVisibility(View.GONE);
+            isViewPagerVisible = false;
+        }
+    }
     private static class MyHandler extends Handler { // 第二步，将需要引用Activity的地方，改成弱引用。
         private WeakReference<PillFragment> atyInstance;
 

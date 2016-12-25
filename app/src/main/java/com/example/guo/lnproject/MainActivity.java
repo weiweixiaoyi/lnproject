@@ -3,34 +3,26 @@ package com.example.guo.lnproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
-import com.example.guo.lnproject.activity.SuperActivity;
+import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.alarm.AlarmClockManager;
-import com.example.guo.lnproject.fragment.DrinkFragment;
-import com.example.guo.lnproject.fragment.HeadFragment;
-import com.example.guo.lnproject.fragment.PillFragment;
+import com.example.guo.lnproject.module.drink.DrinkFragment;
+import com.example.guo.lnproject.module.neck.HeadFragment;
+import com.example.guo.lnproject.module.pill.PillFragment;
 import com.example.guo.lnproject.utils.LogUtils;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.Call;
 
-public class MainActivity extends SuperActivity {
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
     @Bind(R.id.drawer_content)
@@ -44,32 +36,32 @@ public class MainActivity extends SuperActivity {
     private FloatingActionButton fab;
 
     @Override
+    protected int setUpContentView() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initPresenter() {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.toolbar_bg));
-        toolbar.setTitle("喝水时间");
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currType == 0)
-                    ((DrinkFragment) drinkFragment).drinkWaterDialog.show();
-            }
-        });
         initView();
         iniFragment();
+        initData();
+        AlarmClockManager.getInstance().resetAllAlarms(this);
+        AlarmClockManager.getInstance().setNextAlarm(this);
+    }
 
+    private void initData() {
         Intent intent = getIntent();
         int type = 0;
         if(intent != null){
             type  = intent.getIntExtra("alarmtype", 0);
         }
         changeFragment(type);
-        AlarmClockManager.getInstance().resetAllAlarms(this);
-        AlarmClockManager.getInstance().setNextAlarm(this);
     }
 
     private void iniFragment() {
@@ -116,6 +108,17 @@ public class MainActivity extends SuperActivity {
 
 
     private void initView() {
+        setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.toolbar_bg));
+        toolbar.setTitle("喝水时间");
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currType == 0)
+                    ((DrinkFragment) drinkFragment).drinkWaterDialog.show();
+            }
+        });
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout
         ,toolbar,R.string.drink_title,R.string.drink_title){
             @Override
