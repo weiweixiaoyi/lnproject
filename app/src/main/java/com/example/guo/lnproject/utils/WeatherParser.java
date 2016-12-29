@@ -4,9 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.guo.lnproject.bean.MyWeatherEntity;
-import com.example.guo.lnproject.utils.Contacts;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

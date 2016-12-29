@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -73,10 +72,21 @@ public class NewAlarmActivity extends BaseActivity {
     }
 
     @Override
+    protected int setUpContentView ()
+    {
+
+        return R.layout.activity_newalarm;
+    }
+
+    @Override
+    protected void initPresenter ()
+    {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newalarm);
-        ButterKnife.bind(this);
         initData();
     }
 

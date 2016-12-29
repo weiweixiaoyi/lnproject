@@ -3,21 +3,20 @@ package com.example.guo.lnproject.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.guo.lnproject.R;
-import com.example.guo.lnproject.utils.AppManager;
+import com.example.guo.lnproject.base.BaseActivity;
+import com.example.guo.lnproject.utils.utils;
 import com.example.guo.lnproject.utils.Contacts;
-import com.example.guo.lnproject.utils.ToastUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MethodDetailActivity extends AppCompatActivity {
+public class MethodDetailActivity extends BaseActivity
+{
     @Bind(R.id.methoddetail_titleTv)
     public TextView titleTv;
     @Bind(R.id.methoddetail_focusTv)
@@ -35,11 +34,23 @@ public class MethodDetailActivity extends AppCompatActivity {
         intent.putExtra("type", type);
         context.startActivity(intent);
     }
+
+    @Override
+    protected int setUpContentView ()
+    {
+
+        return R.layout.activity_methoddetail;
+    }
+
+    @Override
+    protected void initPresenter ()
+    {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_methoddetail);
-        ButterKnife.bind(this);
         initData();
     }
 
@@ -88,7 +99,7 @@ public class MethodDetailActivity extends AppCompatActivity {
      public void onClick(View view){
         switch (view.getId()){
             case R.id.methoddetail_backImg:
-                AppManager.getAppManager().finishActivity(this);
+                utils.getAppManager().finishActivity(this);
                 break;
             case R.id.methoddetail_clickToActionBtn:
                 MethodActionActivity.startAction(MethodDetailActivity.this,type);

@@ -9,13 +9,12 @@ import android.widget.TextView;
 
 import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.base.BaseActivity;
-import com.example.guo.lnproject.utils.AppManager;
+import com.example.guo.lnproject.utils.utils;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HeadMethodActivity extends BaseActivity {
@@ -52,10 +51,21 @@ public class HeadMethodActivity extends BaseActivity {
     }
 
     @Override
+    protected int setUpContentView ()
+    {
+
+        return R.layout.activity_headmethod;
+    }
+
+    @Override
+    protected void initPresenter ()
+    {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_headmethod);
-        ButterKnife.bind(this);
         type = getIntent().getIntExtra("type",1);
         resources = getResources();
         initMaps();
@@ -93,7 +103,7 @@ public class HeadMethodActivity extends BaseActivity {
                 MethodDetailActivity.startAction(HeadMethodActivity.this,method3Map.get(type));
                 break;
             case R.id.headmethod_backImg:
-                AppManager.getAppManager().finishActivity(HeadMethodActivity.this);
+                utils.getAppManager().finishActivity(HeadMethodActivity.this);
                 break;
         }
     }

@@ -27,8 +27,6 @@ import com.example.guo.lnproject.bean.CookbookEntity;
 import com.example.guo.lnproject.utils.Contacts;
 import com.example.guo.lnproject.utils.DensityUtil;
 import com.example.guo.lnproject.widget.CustomViewPager;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -36,7 +34,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import okhttp3.Call;
 
 /**
  * Created by Administrator on 2016/3/16.

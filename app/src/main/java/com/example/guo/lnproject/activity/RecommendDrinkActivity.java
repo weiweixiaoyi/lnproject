@@ -19,13 +19,12 @@ import com.example.guo.lnproject.adapter.ViewHolder;
 import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.bean.CookMethodEntity;
 import com.example.guo.lnproject.bean.RecommendDrinkEntity;
-import com.example.guo.lnproject.utils.AppManager;
+import com.example.guo.lnproject.utils.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2016/3/9.
@@ -59,17 +58,29 @@ public class RecommendDrinkActivity extends BaseActivity {
         intent.putExtra("resource",resource);
         context.startActivity(intent);
     }
+
+    @Override
+    protected int setUpContentView ()
+    {
+
+        return R.layout.activity_recommenddrink;
+    }
+
+    @Override
+    protected void initPresenter ()
+    {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommenddrink);
-        ButterKnife.bind(this);
-        recommendList = new ArrayList<RecommendDrinkEntity>();
+        recommendList = new ArrayList<>();
         mListView = ((ListView) findViewById(R.id.recommenddrink_listview));
         backImg.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                AppManager.getAppManager().finishActivity(RecommendDrinkActivity.this);
+                utils.getAppManager().finishActivity(RecommendDrinkActivity.this);
             }
         });
         resources = getResources();

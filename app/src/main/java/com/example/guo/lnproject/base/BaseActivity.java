@@ -1,10 +1,9 @@
 package com.example.guo.lnproject.base;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.guo.lnproject.utils.AppManager;
+import com.example.guo.lnproject.utils.utils;
 import com.example.guo.lnproject.utils.ToastUtils;
 
 import butterknife.ButterKnife;
@@ -19,7 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppManager.getAppManager().addActivity(this);
+        utils.getAppManager().addActivity(this);
         setContentView(setUpContentView());
         ButterKnife.bind(this);
     }
@@ -27,7 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.getAppManager().finishActivity(this);
+        utils.getAppManager().finishActivity(this);
     }
 
     @Override

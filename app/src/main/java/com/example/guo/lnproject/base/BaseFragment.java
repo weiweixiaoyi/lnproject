@@ -22,6 +22,7 @@ public abstract class BaseFragment extends Fragment implements BaseView{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mLayoutView = inflater.inflate(setUpContentView(),container,false);
         ButterKnife.bind(this,mLayoutView);
+        initPresenter();
         return mLayoutView;
     }
 

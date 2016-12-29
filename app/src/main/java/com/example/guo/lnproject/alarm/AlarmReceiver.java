@@ -5,11 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.guo.lnproject.MainActivity;
 import com.example.guo.lnproject.utils.Contacts;
-import com.example.guo.lnproject.utils.LogUtils;
 
 public class AlarmReceiver extends BroadcastReceiver {
 

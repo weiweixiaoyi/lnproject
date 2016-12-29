@@ -1,24 +1,25 @@
 package com.example.guo.lnproject.utils;
 
-import java.util.Stack;
-
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
-public class AppManager {
+import java.util.Stack;
+
+public class utils
+{
 	private static Stack<Activity> activityStack;
-	private static AppManager instance;
+	private static utils instance;
 	
-	private AppManager(){
+	private utils (){
 		activityStack = new Stack<Activity>();
 	}
 	/**
 	 * 单一实例
 	 */
-	public static AppManager getAppManager(){
+	public static utils getAppManager (){
 		if(instance==null){
-			instance=new AppManager();
+			instance=new utils();
 		}
 		return instance;
 	}

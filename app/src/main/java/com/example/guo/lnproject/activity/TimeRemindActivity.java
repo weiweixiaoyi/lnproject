@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -62,10 +61,21 @@ public class TimeRemindActivity extends BaseActivity {
 
 
     @Override
+    protected int setUpContentView ()
+    {
+
+        return R.layout.activity_timeremind;
+    }
+
+    @Override
+    protected void initPresenter ()
+    {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timeremind);
-        ButterKnife.bind(this);
         resources = getResources();
         initData();
         initView();

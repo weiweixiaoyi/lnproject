@@ -5,6 +5,10 @@
     <string name="drink_title">喝水时间</string>
     <string name="head_title">颈椎健康</string>
     <string name="pill_title">吃药时间</string>
+    <string name="please_set">请设置</string>
+    <string name="back">返回</string>
+    <string name="confirm">确定</string>
+    <string name="please_input_drink_water">请输入喝水量</string>
 
 
     <!--专家推荐-->

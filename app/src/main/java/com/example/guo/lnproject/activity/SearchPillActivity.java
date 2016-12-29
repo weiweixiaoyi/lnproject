@@ -18,7 +18,6 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
@@ -43,11 +42,23 @@ public class SearchPillActivity extends BaseActivity {
     @Bind(R.id.searchpill_webView)
     public WebView webView;
     private InputMethodManager mInputManager;
+
+    @Override
+    protected int setUpContentView ()
+    {
+
+        return R.layout.activity_searchpill;
+    }
+
+    @Override
+    protected void initPresenter ()
+    {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_searchpill);
-        ButterKnife.bind(this);
         mInputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         webView.setOnTouchListener(new View.OnTouchListener() {
 

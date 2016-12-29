@@ -11,11 +11,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.base.BaseActivity;
-import com.example.guo.lnproject.utils.AppManager;
+import com.example.guo.lnproject.utils.utils;
 import com.example.guo.lnproject.utils.Contacts;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MethodActionActivity extends BaseActivity {
@@ -35,10 +34,21 @@ public class MethodActionActivity extends BaseActivity {
     }
 
     @Override
+    protected int setUpContentView ()
+    {
+
+        return R.layout.activity_methodaction;
+    }
+
+    @Override
+    protected void initPresenter ()
+    {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_methodaction);
-        ButterKnife.bind(this);
         initData();
     }
 
@@ -86,7 +96,7 @@ public class MethodActionActivity extends BaseActivity {
     public void onClick(View view){
         switch(view.getId()){
             case R.id.methodaction_backImg:
-                AppManager.getAppManager().finishActivity(MethodActionActivity.this);
+                utils.getAppManager().finishActivity(MethodActionActivity.this);
                 break;
         }
     }

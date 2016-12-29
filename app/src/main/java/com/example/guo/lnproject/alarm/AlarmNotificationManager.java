@@ -7,12 +7,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 
-import com.example.guo.lnproject.MainActivity;
+import com.example.guo.lnproject.activity.MainActivity;
 import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.utils.CommonSPManager;
-import com.example.guo.lnproject.utils.Contacts;
 import com.example.guo.lnproject.utils.LogUtils;
 
 

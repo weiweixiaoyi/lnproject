@@ -1,4 +1,4 @@
-package com.example.guo.lnproject;
+package com.example.guo.lnproject.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.guo.lnproject.R;
 import com.example.guo.lnproject.base.BaseActivity;
 import com.example.guo.lnproject.alarm.AlarmClockManager;
 import com.example.guo.lnproject.module.drink.DrinkFragment;
@@ -116,7 +117,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if (currType == 0)
-                    ((DrinkFragment) drinkFragment).drinkWaterDialog.show();
+                    ((DrinkFragment) drinkFragment).showDrinkWaterDialog();
             }
         });
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout

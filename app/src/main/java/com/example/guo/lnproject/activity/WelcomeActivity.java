@@ -11,11 +11,11 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
-import com.example.guo.lnproject.MainActivity;
 import com.example.guo.lnproject.R;
 
 
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends Activity
+{
 	
 	private LinearLayout launch;
 	private Animation fadeIn;
@@ -25,12 +25,13 @@ public class WelcomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		// 设置无title
+		// 取消标题
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		// 设置全屏
+		//必须放在中间
+		setContentView(R.layout.activity_welcome);
+		// 取消状态栏
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.activity_welcome);
 		init();
 		setListener();
 	}

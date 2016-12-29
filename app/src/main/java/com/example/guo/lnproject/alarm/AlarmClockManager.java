@@ -9,7 +9,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.guo.lnproject.utils.Contacts;
 import com.example.guo.lnproject.utils.LogUtils;
