@@ -186,6 +186,8 @@ public class DrinkFragment extends BaseFragment
         {
             locationDialog = new RecyclerViewDialog(activity);
             locationDialog.refreshRecyclerViewData(provinceStringList);
+            locationDialog.setCancelable(true);
+            locationDialog.setCanceledOnTouchOutside(true);
             locationDialog.setCallBack(new RecyclerViewDialog.DialogCallBack()
             {
                 @Override
@@ -208,11 +210,11 @@ public class DrinkFragment extends BaseFragment
                                     .get(position).getCities().size() > 0)
 
                             {
-
                                 locationDialog.refreshRecyclerViewData(provinceList.get(position)
                                         .getCities());
-//                                locationDialog.resetRecyclerViewSelection();
+                                //                                locationDialog.resetRecyclerViewSelection();
                                 locationDialog.show();
+
                             }
                             else
                             {

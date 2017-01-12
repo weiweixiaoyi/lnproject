@@ -26,6 +26,5 @@ proguard/
 # Log Files
 *.log
 
-.idea/
 LNProject.iml
 app/app.iml
