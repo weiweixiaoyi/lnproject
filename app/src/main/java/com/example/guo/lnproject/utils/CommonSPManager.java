@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.SparseIntArray;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/4/8 0008.
@@ -26,6 +28,10 @@ public class CommonSPManager
     private static final String TIME_MONTH = "month";
 
     private static final String TIME_DAY = "day";
+
+    public static final String KEY_CITY = "city";
+
+    public static final String KEY_PROVINCE = "province";
 
     public static final int DRINK_GOAL_DEFAULT = 1500;//系统默认喝水目标值
 
@@ -66,6 +72,25 @@ public class CommonSPManager
     {
 
         return (Integer) SPUtil.get(context, DRINK_WATER, DRINK_WATER_DEFAULT);
+    }
+
+    public static void setLocation (Context context, String province, String city)
+    {
+
+        SharedPreferences.Editor edit = context.getSharedPreferences(SPUtil.FILE_NAME, Context
+                .MODE_PRIVATE).edit();
+        edit.putString(KEY_CITY, city);
+        edit.putString(KEY_PROVINCE, province);
+        SPUtil.SharedPreferencesCompat.apply(edit);
+    }
+
+    public static List<String> getLocation (Context context)
+    {
+
+        List<String> list = new ArrayList<>();
+        list.add((String) SPUtil.get(context, KEY_PROVINCE, "北京"));
+        list.add((String) SPUtil.get(context, KEY_CITY, "北京"));
+        return list;
     }
 
     public static void setDrinkTime (Context context, SparseIntArray date)

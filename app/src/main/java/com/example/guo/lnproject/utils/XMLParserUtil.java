@@ -1,8 +1,8 @@
 package com.example.guo.lnproject.utils;
 
-import android.util.Log;
 import android.util.Xml;
 
+import com.example.guo.lnproject.LNApplication;
 import com.example.guo.lnproject.bean.ProvinceEntity;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -14,26 +14,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Pull解析XML
  * Created by gmw on 16/12/28.
  */
 public class XMLParserUtil
 {
-    private static XMLParserUtil ourInstance = new XMLParserUtil();
+    private static XMLParserUtil mInstance = null;
 
-    public static XMLParserUtil getInstance ()
-    {
-
-        return ourInstance;
-    }
+    private static List<ProvinceEntity> mProvinceList = null;
 
     private XMLParserUtil ()
     {
 
     }
 
-    public List<ProvinceEntity> parseXML(InputStream inStream){
-        List<ProvinceEntity> persons = null;
-        ProvinceEntity person = null;
+    public static XMLParserUtil getInstance ()
+    {
+
+        if (mInstance == null)
+        {
+            mInstance = new XMLParserUtil();
+        }
+        return mInstance;
+    }
+
+    private void parseXML (InputStream inStream)
+    {
+
+        ProvinceEntity provinceEntity = null;
         List<String> cities = null;
         XmlPullParser parser = Xml.newPullParser();
         try
@@ -45,44 +53,58 @@ public class XMLParserUtil
                 switch (eventType)
                 {
                     case XmlPullParser.START_DOCUMENT:
-                        persons = new ArrayList<>();
+                        mProvinceList = new ArrayList<>();
                         break;
 
                     case XmlPullParser.START_TAG:
                         String name = parser.getName();// 获取解析器当前指向的元素的名称
                         if ("province".equals(name))
                         {
-                            person = new ProvinceEntity();
+                            provinceEntity = new ProvinceEntity();
                             cities = new ArrayList<>();
-                            person.setName(parser.getAttributeValue(0));
+                            provinceEntity.setName(parser.getAttributeValue(0));
                         }
-                        if (person != null)
+                        if (provinceEntity != null)
                         {
                             if ("city".equals(name))
                             {
                                 cities.add(parser.getAttributeValue(0));
-                                // person.setName(parser.nextText());//获取解析器当前指向元素的下一个文本节点的值
                             }
 
                         }
                         break;
                     case XmlPullParser.END_TAG:
-                        Log.i("info", parser.getName());
                         if ("province".equals(parser.getName()))
                         {
-                            person.setCities(cities);
-                            persons.add(person);
-                            person = null;
+                            provinceEntity.setCities(cities);
+                            mProvinceList.add(provinceEntity);
+                            provinceEntity = null;
                             cities = null;
                         }
                         break;
                 }
                 eventType = parser.next();
             }
-        }catch (XmlPullParserException | IOException e){
+        } catch (XmlPullParserException | IOException e)
+        {
             e.printStackTrace();
         }
-        return persons;
+    }
+
+    public List<ProvinceEntity> getProvinceList ()
+    {
+
+        if (mProvinceList == null)
+        {
+            try
+            {
+                parseXML(LNApplication.getInstance().getResources().getAssets().open("city.xml"));
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        return mProvinceList;
     }
 }
 

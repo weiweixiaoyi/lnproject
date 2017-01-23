@@ -8,4 +8,5 @@ import com.example.guo.lnproject.base.BasePresenter;
 
 public interface DrinkPresenter extends BasePresenter
 {
+    void loadWeatherData(String province, String city);
 }

@@ -2,9 +2,6 @@ package com.example.guo.lnproject.module.drink;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.TextView;
@@ -14,34 +11,29 @@ import com.example.guo.lnproject.activity.RecommendDrinkActivity;
 import com.example.guo.lnproject.activity.TimeRemindActivity;
 import com.example.guo.lnproject.base.BaseFragment;
 import com.example.guo.lnproject.bean.MyWeatherEntity;
-import com.example.guo.lnproject.bean.ProvinceEntity;
 import com.example.guo.lnproject.utils.CalendarUtil;
 import com.example.guo.lnproject.utils.CommonSPManager;
 import com.example.guo.lnproject.utils.Contacts;
 import com.example.guo.lnproject.utils.MathUtil;
-import com.example.guo.lnproject.utils.WeatherParser;
-import com.example.guo.lnproject.utils.XMLParserUtil;
 import com.example.guo.lnproject.widget.DonutProgress;
 import com.example.guo.lnproject.widget.dialog.AdjustDialog;
+import com.example.guo.lnproject.widget.dialog.CityPickerDialog;
 import com.example.guo.lnproject.widget.dialog.EditTextDialog;
-import com.example.guo.lnproject.widget.dialog.RecyclerViewDialog;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import okhttp3.Call;
 
 /**
+ * 喝水主页面
  * Created by Administrator on 2016/3/1 0001.
  */
-public class DrinkFragment extends BaseFragment
+public class DrinkFragment extends BaseFragment implements DrinkView
 {
+    private static final String TAG = "DrinkFragment";
+
     @Bind(R.id.drink_weather_locationTv)
     public TextView weather_locationTv;
 
@@ -60,21 +52,9 @@ public class DrinkFragment extends BaseFragment
     @Bind(R.id.donut_progress)
     public DonutProgress drinkProgress;
 
-    private static final String TAG = "DrinkFragment";
-
     private Activity activity;
 
-    private String province = "北京";
-
-    private String city = "北京";
-
-    private int provinceIndex;
-
-    private RecyclerViewDialog locationDialog;
-
-    private List<ProvinceEntity> provinceList;
-
-    private List<String> provinceStringList;
+    private CityPickerDialog cityPickDialog;
 
     private AdjustDialog adjustDialog;
 
@@ -85,6 +65,8 @@ public class DrinkFragment extends BaseFragment
     private int needWater;
 
     public EditTextDialog drinkWaterDialog;
+
+    private DrinkPresenter mPresenter;
 
     @Override
     protected int setUpContentView ()
@@ -97,14 +79,7 @@ public class DrinkFragment extends BaseFragment
     protected void initPresenter ()
     {
 
-    }
-
-    @Override
-    public void onViewCreated (View view, @Nullable Bundle savedInstanceState)
-    {
-
-        super.onViewCreated(view, savedInstanceState);
-        initDatas();
+        mPresenter = new DrinkPresenterImpl(this);
     }
 
     private void loadDrinkData ()
@@ -129,8 +104,9 @@ public class DrinkFragment extends BaseFragment
 
         super.onActivityCreated(savedInstanceState);
         activity = getActivity();
-        getProvinceList();
         loadDrinkData();
+        List<String> location = CommonSPManager.getLocation(activity);
+        mPresenter.loadWeatherData(location.get(0), location.get(1));
     }
 
     /**
@@ -148,29 +124,6 @@ public class DrinkFragment extends BaseFragment
                 date2.get(Calendar.DAY_OF_MONTH));
     }
 
-    private void getProvinceList ()
-    {
-
-        try
-        {
-            provinceList = XMLParserUtil.getInstance().parseXML(activity.getResources().getAssets
-                    ().open("city.xml"));
-            if (provinceList != null && provinceList.size() > 0)
-            {
-                provinceStringList = new ArrayList<>();
-                for (int i = 0; i < provinceList.size(); i++)
-                {
-                    provinceStringList.add(provinceList.get(i).getName());
-                }
-            }
-
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-
     private int getProgressValue ()
     {
 
@@ -179,61 +132,33 @@ public class DrinkFragment extends BaseFragment
         return i > 100 ? 100 : i;
     }
 
-    private void showLocationDialog ()
+    private void showCityPickerDialog ()
     {
 
-        if (locationDialog == null)
+        if (cityPickDialog == null)
         {
-            locationDialog = new RecyclerViewDialog(activity);
-            locationDialog.refreshRecyclerViewData(provinceStringList);
-            locationDialog.setCancelable(true);
-            locationDialog.setCanceledOnTouchOutside(true);
-            locationDialog.setCallBack(new RecyclerViewDialog.DialogCallBack()
+            cityPickDialog = new CityPickerDialog(activity);
+            cityPickDialog.setCallback(new CityPickerDialog.CallBackDialog()
             {
                 @Override
-                public void onCompleteCancel ()
+                public void completedConfirm ()
                 {
 
+                    CommonSPManager.setLocation(activity, cityPickDialog.getProvinceName(),
+                            cityPickDialog.getCityName());
+                    mPresenter.loadWeatherData(cityPickDialog.getProvinceName(), cityPickDialog
+                            .getCityName());
                 }
 
                 @Override
-                public void onItemClickListener (View view, int position)
+                public void completedCancel ()
                 {
 
-                    if (position < provinceList.size())
-                    {
-                        if (province == null)
-                        {
-                            provinceIndex = position;
-                            province = provinceList.get(position).getName();
-                            if (provinceList.get(position).getCities() != null && provinceList
-                                    .get(position).getCities().size() > 0)
-
-                            {
-                                locationDialog.refreshRecyclerViewData(provinceList.get(position)
-                                        .getCities());
-                                //                                locationDialog.resetRecyclerViewSelection();
-                                locationDialog.show();
-
-                            }
-                            else
-                            {
-                                city = province;
-                                initDatas();
-                            }
-                        }
-                        else
-                        {
-                            city = provinceList.get(provinceIndex).getCities().get(position);
-                            Log.i("info", "province---" + province + ",city--" + city);
-                            initDatas();
-                        }
-
-                    }
                 }
             });
         }
-        locationDialog.show();
+        cityPickDialog.resetDatas();
+        cityPickDialog.show();
     }
 
     private void showAdjustDialog ()
@@ -302,18 +227,6 @@ public class DrinkFragment extends BaseFragment
         drinkWaterDialog.show();
     }
 
-    private void resetLocationDialog ()
-    {
-
-        province = null;
-        city = null;
-        provinceIndex = 0;
-        if (locationDialog != null)
-        {
-            locationDialog.refreshRecyclerViewData(provinceStringList);
-        }
-    }
-
     @OnClick({R.id.drink_weather_layout, R.id.drink_recommendLayout, R.id.drink_cupLayout, R.id
             .drink_adjustLayout, R.id.drink_remindLayout})
     public void onClick (View view)
@@ -322,8 +235,7 @@ public class DrinkFragment extends BaseFragment
         switch (view.getId())
         {
             case R.id.drink_weather_layout:
-                resetLocationDialog();
-                showLocationDialog();
+                showCityPickerDialog();
                 break;
             case R.id.drink_recommendLayout:
                 RecommendDrinkActivity.startAction(activity, RecommendDrinkActivity.FROM_RECOMMEND);
@@ -340,36 +252,8 @@ public class DrinkFragment extends BaseFragment
         }
     }
 
-    private void initDatas ()
-    {
-
-        OkHttpUtils.get().url(Contacts.WEATHER_URL).addParams("key", Contacts.MOB_KEY).addParams
-                ("city", city).addParams("province", province).build().execute(new StringCallback()
-        {
-
-            @Override
-            public void onError (Call call, Exception e)
-            {
-
-                Snackbar.make(getView(), R.string.error_string, Snackbar.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onResponse (String response)
-            {
-
-                Log.i(TAG, "response--" + response);
-                MyWeatherEntity entity = new WeatherParser().parse(response);
-                Log.i(TAG, "entity" + entity.toString());
-                if (entity != null)
-                {
-                    fillWeatherData(entity);
-                }
-            }
-        });
-    }
-
-    private void fillWeatherData (MyWeatherEntity entity)
+    @Override
+    public void updateWheatherInfo (MyWeatherEntity entity)
     {
 
         weather_locationTv.setText(entity.getCity() + "  " + (entity.getNow_temp() == null ?
@@ -378,5 +262,4 @@ public class DrinkFragment extends BaseFragment
         weather_temperatureTv.setText(entity.getDay_temp() == null ? "暂无数据" : entity.getDay_temp());
         weather_wetTv.setText(entity.getHumidity() == null ? "暂无数据" : entity.getHumidity());
     }
-
 }
